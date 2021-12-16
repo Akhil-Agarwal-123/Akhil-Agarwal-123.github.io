@@ -26,28 +26,47 @@ body {font-family: "Lato", sans-serif}
 <!-- Page content -->
 <div class="w3-content" style="max-width:2000px;margin-top:80px;margin-left:46px;margin-right:46px;margin-bottom:350px">
 
+  <h1 style="text-align:center"><strong>Themes in The Alchemist</strong></h1>
+
+  <h6>This project is about: <br>
+    1. Creating a complex theme and a claim and counterclaim to support and argue against the theme <br>
+    2. Creating storyboards for the claim and counterclaim <br> 
+    3. Annotating the storyboards <br><br> </h6>
+
   <h3><strong>Theme</strong></h3>
-  <h6><br>Following one’s dreams leads to an improved life, even when faced with hardships.</h6>
+  <h6>Following one’s dreams leads to an improved life, even when faced with hardships.</h6>
 
   <h3 id="claim"><strong><br><br>Claim Supporting Theme</strong></h3>
-  <h6><br>This is shown when one follows their aspirations and achieves their goal, gaining valuable experiences in the process.</h6>
+  <h6>This is shown when one follows their aspirations and achieves their goal, gaining valuable experiences in the process.</h6>
+
+  <br>
+
+  <div style="text-align:center">
+    <button style="background-color:#FF611D" onclick="backClaim()">Previous</button>
+    <button style="background-color:#FF611D" onclick="resumeOrPauseClaim()" id="resume-claim">Pause</button>
+    <button style="background-color:#FF611D" onclick="toggleAnnotationsClaim()" id="annotations-on-claim">Hide Annotations</button>
+    <button style="background-color:#FF611D" onclick="advanceClaim()">Next</button>
+  </div>
 
   <div class="w3-display-container w3-center">
     <img src="" style="width:60%" id="img-for" alt="Image Supporting Theme">
   </div>
 
-  <button onclick="resumeOrPauseClaim()" id="resume-claim">Pause</button>
-  <button onclick="toggleAnnotationsClaim()" id="annotations-on-claim">Hide Annotations</button>
-
   <h3 id="counterclaim"><strong><br><br>Claim Against Theme</strong></h3>
-  <h6><br>This is disproven when one becomes overly ambitious and ends up in a worse situation than when they started.</h6>
+  <h6>This is disproven when one becomes overly ambitious and ends up in a worse situation than when they started.</h6>
+
+  <br>
+
+  <div style="text-align:center">
+    <button style="background-color:#FF611D" onclick="backCounter()">Previous</button>
+    <button style="background-color:#FF611D" onclick="resumeOrPauseCounter()" id="resume-counter">Pause</button>
+    <button style="background-color:#FF611D" onclick="toggleAnnotationsCounter()" id="annotations-on-counter">Hide Annotations</button>
+    <button style="background-color:#FF611D" onclick="advanceCounter()">Next</button>
+  </div>
 
   <div class="w3-display-container w3-center">
     <img src="" style="width:60%" id="img-against" alt="Image Against Theme">
   </div>
-
-  <button onclick="resumeOrPauseCounter()" id="resume-counter">Pause</button>
-  <button onclick="toggleAnnotationsCounter()" id="annotations-on-counter">Hide Annotations</button>
 
   <h3 id="workscited"><strong><br><br>Works Cited</strong></h3>
 
@@ -78,15 +97,11 @@ body {font-family: "Lato", sans-serif}
 
   function carousel() {
     if (playingForClaim) {
-      myIndexClaim++;
-      if (myIndexClaim > 5) {myIndexClaim = 1}  
-      updateClaimCarousel();
+      advanceClaim();
     }
 
     if (playingForCounter) {
-      myIndexCounter++;
-      if (myIndexCounter > 5) {myIndexCounter = 1}  
-      updateCounterCarousel();
+      advanceCounter();
     }
 
     setTimeout(carousel, 4000);  
@@ -106,6 +121,30 @@ body {font-family: "Lato", sans-serif}
     } else {
       document.getElementById("img-against").src = "./Unannotated/Anti_" + myIndexCounter + ".png"; 
     }
+  }
+
+  function advanceClaim() {
+    myIndexClaim++;
+    if (myIndexClaim > 5) {myIndexClaim = 1}
+    updateClaimCarousel();
+  }
+
+  function advanceCounter() {
+    myIndexCounter++;
+    if (myIndexCounter > 5) {myIndexCounter = 1}  
+    updateCounterCarousel();
+  }
+
+  function backClaim() {
+    myIndexClaim--;
+    if (myIndexClaim <= 0) {myIndexClaim = 5}
+    updateClaimCarousel();
+  }
+
+  function backCounter() {
+    myIndexCounter--;
+    if (myIndexCounter <= 0) {myIndexCounter = 5}
+    updateCounterCarousel();
   }
 
   function resumeOrPauseClaim() {
