@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Akhil's Tinoco Semester 1 Final</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {font-family: "Lato", sans-serif}
+.mySlides {display: none}
+</style>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Akhil's Tinoco Final</a>
+    <a href="#claim" class="w3-bar-item w3-button w3-padding-large">CLAIM FOR THEME</a>
+    <a href="#counterclaim" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CLAIM AGAINST THEME</a>
+    <a href="#workscited" class="w3-bar-item w3-button w3-padding-large w3-hide-small">WORKS CITED</a>
+  </div>
+</div>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:2000px;margin-top:80px;margin-left:46px;margin-right:46px;margin-bottom:350px">
+
+  <h3><strong>Theme</strong></h3>
+  <h6><br>Following one’s dreams leads to an improved life, even when faced with hardships.</h6>
+
+  <h3 id="claim"><strong><br><br>Claim Supporting Theme</strong></h3>
+  <h6><br>This is shown when one follows their aspirations and achieves their goal, gaining valuable experiences in the process.</h6>
+
+  <div class="w3-display-container w3-center">
+    <img src="" style="width:60%" id="img-for" alt="Image Supporting Theme">
+  </div>
+
+  <button onclick="resumeOrPauseClaim()" id="resume-claim">Pause</button>
+  <button onclick="toggleAnnotationsClaim()" id="annotations-on-claim">Hide Annotations</button>
+
+  <h3 id="counterclaim"><strong><br><br>Claim Against Theme</strong></h3>
+  <h6><br>This is disproven when one becomes overly ambitious and ends up in a worse situation than when they started.</h6>
+
+  <div class="w3-display-container w3-center">
+    <img src="" style="width:60%" id="img-against" alt="Image Against Theme">
+  </div>
+
+  <button onclick="resumeOrPauseCounter()" id="resume-counter">Pause</button>
+  <button onclick="toggleAnnotationsCounter()" id="annotations-on-counter">Hide Annotations</button>
+
+  <h3 id="workscited"><strong><br><br>Works Cited</strong></h3>
+
+  <p>
+    1. https://www.canva.com <br>
+    2. https://www.pixton.com/ <br>
+    3. https://phraseit.net <br>
+    4. “Glass and Crystal: Czech Glass in Prague.” Prague Stay, https://prague-stay.com/lifestyle/category/12-shopping-in-prague/74-glass-and-crystal-czech-glass-in-prague.  <br>
+    5. “ArtStation - king melchizedek, Daeyoon Huh.” Artstation - King Melchizedek, Daeyoon Huh. https://www.artstation.com/artwork/k1wnd.  <br>
+    6. “Fountain on a Public Square in an Old Village in the South of France (Provence) by Ivan Bastien Photographe.” Stocksy United, https://www.stocksy.com/566495/fountain-on-a-public-square-in-an-old-village-in-the-south-of-france-provence.  <br>
+    7. Macklin, Alexis. “The Alchemist: A Leader's Journey - Humphrey Fellows at Cronkite School of Journalism and Mass Communication.” ASU, 5 Sept. 2019, https://cronkitehhh.jmc.asu.edu/blog/2015/04/the-alchemist-a-leaders-journey/.  <br>
+    8. “Old Town Market Place, Warsaw.” Wikipedia, Wikimedia Foundation, 15 Feb. 2021, https://en.wikipedia.org/wiki/Old_Town_Market_Place,_Warsaw.  <br>
+  </p>
+  
+<!-- End Page Content -->
+</div>
+
+<script>
+  // Automatic Slideshow - change image every 4 seconds
+  var myIndexClaim = 0;
+  var myIndexCounter = 0;
+  var playingForClaim = true;
+  var playingForCounter = true;
+  var annotationsClaim = true;
+  var annotationsCounter = true;
+
+  carousel();
+
+  function carousel() {
+    if (playingForClaim) {
+      myIndexClaim++;
+      if (myIndexClaim > 5) {myIndexClaim = 1}  
+      updateClaimCarousel();
+    }
+
+    if (playingForCounter) {
+      myIndexCounter++;
+      if (myIndexCounter > 5) {myIndexCounter = 1}  
+      updateCounterCarousel();
+    }
+
+    setTimeout(carousel, 4000);  
+  }
+
+  function updateClaimCarousel() {
+    if (annotationsClaim) {
+      document.getElementById("img-for").src = "./Annotated/Pro_" + myIndexClaim + ".png"; 
+    } else {
+      document.getElementById("img-for").src = "./Unannotated/Pro_" + myIndexClaim + ".png"; 
+    }
+  }
+
+  function updateCounterCarousel() {
+    if (annotationsCounter) {
+      document.getElementById("img-against").src = "./Annotated/Anti_" + myIndexCounter + ".png"; 
+    } else {
+      document.getElementById("img-against").src = "./Unannotated/Anti_" + myIndexCounter + ".png"; 
+    }
+  }
+
+  function resumeOrPauseClaim() {
+    playingForClaim = !playingForClaim;
+    if (playingForClaim) {
+      document.getElementById("resume-claim").textContent = "Pause";
+    } else {
+      document.getElementById("resume-claim").textContent = "Resume";
+    }
+  }
+
+  function resumeOrPauseCounter() {
+    playingForCounter = !playingForCounter;
+    if (playingForCounter) {
+      document.getElementById("resume-counter").textContent = "Pause";
+    } else {
+      document.getElementById("resume-counter").textContent = "Resume";
+    }
+  }
+
+  function toggleAnnotationsClaim() {
+    annotationsClaim = !annotationsClaim;
+    if (annotationsClaim) {
+      document.getElementById("annotations-on-claim").textContent = "Hide Annotations";
+    } else {
+      document.getElementById("annotations-on-claim").textContent = "Show Annotations";
+    }
+    updateClaimCarousel();
+  }
+
+  function toggleAnnotationsCounter() {
+    annotationsCounter = !annotationsCounter;
+    if (annotationsCounter) {
+      document.getElementById("annotations-on-counter").textContent = "Hide Annotations";
+    } else {
+      document.getElementById("annotations-on-counter").textContent = "Show Annotations";
+    }
+    updateCounterCarousel();
+  }
+</script>
+
+</body>
+</html>
