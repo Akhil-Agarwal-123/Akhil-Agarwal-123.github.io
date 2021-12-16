@@ -97,11 +97,15 @@ body {font-family: "Lato", sans-serif}
 
   function carousel() {
     if (playingForClaim) {
-      advanceClaim();
+      myIndexClaim++;
+      if (myIndexClaim > 5) {myIndexClaim = 1}
+      updateClaimCarousel();
     }
 
     if (playingForCounter) {
-      advanceCounter();
+      myIndexCounter++;
+      if (myIndexCounter > 5) {myIndexCounter = 1}  
+      updateCounterCarousel();
     }
 
     setTimeout(carousel, 4000);  
@@ -125,25 +129,25 @@ body {font-family: "Lato", sans-serif}
 
   function advanceClaim() {
     myIndexClaim++;
-    if (myIndexClaim > 5) {myIndexClaim = 1}
+    if (myIndexClaim > 5) {myIndexClaim = 5}
     updateClaimCarousel();
   }
 
   function advanceCounter() {
     myIndexCounter++;
-    if (myIndexCounter > 5) {myIndexCounter = 1}  
+    if (myIndexCounter > 5) {myIndexCounter = 5}  
     updateCounterCarousel();
   }
 
   function backClaim() {
     myIndexClaim--;
-    if (myIndexClaim <= 0) {myIndexClaim = 5}
+    if (myIndexClaim <= 0) {myIndexClaim = 1}
     updateClaimCarousel();
   }
 
   function backCounter() {
     myIndexCounter--;
-    if (myIndexCounter <= 0) {myIndexCounter = 5}
+    if (myIndexCounter <= 0) {myIndexCounter = 1}
     updateCounterCarousel();
   }
 
